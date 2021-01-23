@@ -5,4 +5,5 @@ class A
 		clone by ubuntu local repository through github remote repo
 		windows developer pulled the updated v2 version file
 		This by other branch coding and then will merge both branch though UI
+		ssh window login on github update
 }
