@@ -1,0 +1,330 @@
+grep -rnw . -e demoproject  -- To search any file
+
+man find, recursive search- ctrl+R
+
+ps -e | grep tomcat  -- process check
+ kill 9 -- to kill process
+
+which netstat
+ cd
+netstat -ntlup | grep 8080   --to check port
+
+>> Multics(1969), Unics(1970) - both are in B language(K.N Thomson), C language(1971) by Dennis Ritchie. Unix (1973, combined B & C lang) kernel, command based, not open source. Linux Towalds(1991) developed same Kernel(inbuilt in os, who operate OS) and open source.
+
+>> Two types Software a) Application Software (VLC, MS-Office etc)  b) System Software (OS).
+
+LINUX COMMAND LIST :-
+
+1) To open terminal - alt+f2, gnome-terminal
+2) VM Reboot - systemctl reboot or reboot or init 6, shutdown -c(cancel the shutdown), shutdown -r 5:40 (reboot at 5:4- am time), shutdown -r+15, systemctl poweroff or poweroff or init 0, shutdown -h+15.
+
+3) / (root directory or partition)
+  |
+root(root user hom dir)  boot etc(system config)  bin(cmd) sbin temp dev(hdd) home(normal user dir) lib lib64 opt(3rd party soft) proc mnt usr(doc store)
+
+4) pwd -- It shows present working directory with path
+   cd -- To move from one folder to another folder e.g cd / home/raj , cd / usr , cd / home
+   cd - (one step back)
+   cd -- (two step back)
+
+   ls .... To show details within any folder (if color black file and if blue folder or directory)
+
+Command Syntax : command options arguments
+ e.g ls / temp (here temp is argu.)
+   ls -l (It will show is long list) e.g ls -l / temp , l. (It shows hidden files), l. -l (shows in long      list), ls -a (shows hidden+ non hidden all), ls --help
+
+   touch - (to make/create file, to update time stamp) e.g touch / temp/india.txt
+   stat - (show the time, access, modify)
+   date - (show date)
+   
+   mkdir --(To create folder) e.g mkdir delhi, mkdir old\new or "old new" , mkdir -p laptop /    raj (p-parent, m-read/write, v-verbose, z-context/security)      
+
+   cat & nl -- (To create file, write inside file and read them) e.g cat > myfile.txt -- means    its for writing, while if use cat myfile.txt (means only read since no here >), if cat >>       myfile.txt (means file are in editing, if here use single > it'll override)
+       cat -n myfile.txt -- (number of line show),  (For Save -- ctrl+D)
+
+    tac -- (If opposite to read) e.g tac myfile.txt , nl myfile.txt -- For read only file
+    cat -n / etc/passwd
+   ; -- (Semicolon for multiple cmd in a single line) e.g mkdir emob; cd emob; touch raj; ls
+   | (pipe symbol) -- when a output to manipulate e.g tac myfile.txt | nl
+   
+   head & tail -- (It show from top and bottom) e.g head -n 15 / etc/passwd | cat -n
+   echo -- (To display any msg) e.g echo "how are you ?" , echo "welcome" > myfile.txt     (it'll create file if not exist and write)
+
+   rm -- To delete files and folder e.g rm myfile.txt , rm(only file delete), rm -r(folder delete) e.g rm -r b4 , rm -rvf (file & folder both delete) f means forcefully, e.g rm -rvf b5 a3.txt
+      rm -rvf* (* - means all) e.g rm -rvf / temp/*
+   
+    rename -- To rename file and folder e.g rename india(oldname) delhi(newname) india(oldname)
+    cp -- To copy files and folder e.g cp apc(whom) india(desti), cp -rvf abc{1..10} india ,    cp -rvfn abc* india  -- Directory/folder can't directly copy so its e.g cp -r delhi    india (here delhi india both are folder)
+    
+     mv -- To move files and folder e.g mv delhi india(destin)
+
+ Editor -- vim/vi (To make file & edit) -- Three types of mode (insert mode, esc mode(by     default), command mode)
+         x -- to delete where cursor,   dw -- complete word delete  d x (5 d) -- 5 line delete
+         d d -- To complete line delete , shift zz  -- To come outside from files
+         u - undo , ctrl+r  -- redo  ,  gg -- To top
+
+    Insert Mode - press i to enter into file , esc - Outside from insert mode , press a to   insert after cursor write , press o to go insert mode below cursor to write , shift+o above             cursor to write
+
+   Command Mode - 
+         shift+colon(:) , se nu , se nonu(remove no)
+          w (save) , q (quit) , ! (forcefully) e.g wq! 
+Note- For editing any file do like vim hello.txt --> click i for insert mode then change or write in file after that press esc for cmd mode and write wq! to save and quit
+** ctrl+c  --> To move on root directory
+
+        
+     grep -- (To point any line or word in a docs)  syntax- cmd options argu    filename e.g    grep - nio Root / etc /passwd    (i-ignore, n-line no., o-to    show only that word) ,
+    grep - in -A/B/C 2 root /etc/passwd   (A-after, B- before, c- common)
+       egrep --> To search multiple number of words,
+   If want to search on directory or folder then R use e.g grep -Rin root(search name       word) /etc/ (folder name)
+
+    
+     find --> To search any file or folder  syntax- find location option argument
+             e.g find / -name india , find / - size 10M  (du -sh To check file size)
+               find /data/* -type d/f -name "abc"    d-directory, f-files
+
+     useradd --> To add any user e.g useradd harry , passwd harry
+     su --> switch user e.g su - harry (logged in with harry)
+     userdel harry  It deletes only user, home directory exist
+      userdel -rf natasha    It delete both user & its data
+       exit --> To exit from files/folder 
+
+      ** zip, unzip,tar  syntax : tar option archive-folder files&folder
+      e.g tar -cvf redhat.tar /etc      -- c-create, v-verbose, f-file type name
+         tar -xvf redhat.tar     - x- for unzip the file
+         tar -tvf redhat.tar      - t-- only for listing display no unzip
+         tar -zvf/zcvf redhat.tar.gz /etc     -- archive & compress both
+
+         zip sanjay.zip /etc
+         ls  -- > unzip sanjay.zip  --> ls
+
+         For package checking use - rpm -qa zip/unzip and download wget https://...
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+User Management --> Three types of User a) Super User - root, UID&GID=0, 
+          b) System User - dhcp,dns,apache,samba,nfs, RHEL7-UID&GID-1 to 999
+          c) Normal User - Different user like Harry, raj etc UID&GID- 1000 to 60000
+             this can be increase by /etc/login.defs
+
+[root@serverip~]#   -- root-username, ip-server hostname, ~- currently in ur own home directory,              #- you are super user
+          $- Normal user
+
+          usermod - (To modify in existing user) e.g usermod -u 2020 user1  (uid- u2020)
+           e.g usermod -c "admin" user1   --c- comment
+
+          sudo --> To assign different permission to user , which --> Show binary path
+                 vim /etc/sudoers   --> : se nu     Add here more n more permission
+                e.g Nopasswd:ALL
+            Create a group and add a member e.g group dev-team
+              gpasswd -N harry, natasha dev-team
+
+ Note :- Root user have permit to switch any user account without password, but if any normal user want to switch to another account required password.
+           passwd -s harry    -- here s show password status
+          passwd -l harry     -- here l lock the password so that no can access except root
+          passwd -d harry     -- this will delete the password
+
+** vim my.sh , sh my.sh      --- Use at script time
+
+           chage --> To set user account policy
+         e.g chage -l paddy , chage -w 5 paddy
+
+* How to recover shell if deleted   >> cd /etc/skel  (skel is central where all data save)
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+File/folder --> To provide permission or remove permission from files/folder
+
+r(read)=4 , w(write)=2 , x(execute)=1 means enter into that file/folder by cd   rwx(4+2+1)=7
+
+* read permission means have to x also permission (rx)
+* write permission means have to add read and execute also (rwx)
+         ls -ld   ---> permission show of directory
+         ls -l    ---> permission show of files
+  e.g ls -ld / newdelhi
+      drwx  r-x r-x .   (11 attributes   )
+      | |    |   |  |
+  (directory) (owner permission) (group owner permission) (other permission) (. no advance permission)
+ if + then ACL
+           ls -l / india
+          -rw- r-- r-- .
+           |   |   |  |
+     (owner permission) (group owner permission) (other permission) (. no advance permission)
+
+* Default permission of directory and file if root user create - if directory drwx r-x r-x (7 5 5) 
+         if file - rw- r-- r--  (6 4 4)
+* Default permission of directory and file if normal user create - if directory drwx rwx r-x (7 7 5) 
+         if file - rw- rw- r--  (6 6 4)
+
+        chmod --> To add or remove permission of other User we use this command. e.g
+                  chmod o-r /devteam/     ---- this will remove the read permission of            Other User, so now can't see ls --> abc file but can do cd since x there.
+       chmod o-x /devteam/    -------- Now this will remove the execute permission even
+                   (drwx r-x ---  since here r & x removed)
+
+ Now if want to add permission to Other User then e.g chmod o+x /devteam/   
+         so now  drwx r-x --x   since x added here
+          chmod o+r /devteam/      Here r permission added
+            drwx r-x r-x
+
+Other way to add or remove the permission to Other User -
+          chmod o=rwx /devteam/     ---- It'll replace the existing permission and set the               new chmod 0=---
+
+Note :- Now i want to give permission to only a single Other User not all other user than create the user group owner or create a group and set that group as an group owner.
+         usermod -G root student       groups student       student : student root
+   chmod g+w /devteam/       and  chmod g=--- /devteam/
+
+Now if want to change both Owner and Group owner then - 
+          chown root(owner) : root(grp owner)  /devteam/
+     chmod u(owner)= - - - ,  g(group)= - - - , o(other)= - - -
+     chmod u=rw-, g=r- -, o=rwx  /devteam/
+    drw- r - -  rwx
+ chmod ugo=rwx /devteam/         ---- drwx rwx rwx
+       oug-x  ---- (means remove the x from owner, group and other user)
+     chmod +x or -x     /devteam/
+
+   chmod 755 /devteam/      owner- rwx , grp- r-x , other- r-x
+   chmod 700 /devteam/      rwx - - -  - - -
+** If any normal user create any file / folder they get default permission NOT same as parent
+    If you want to change same permission as parent then-
+       chmod 777 -R /devteam  ---> R-recursive means it change all permission same as parent
+       groupadd team
+      chgrp team  /devteam/       chgrp team -R  /devteam/
+     chown  ---> To ownership change
+   chown student /devteam/           chown student -R  /devteam/
+
+** Other method to add/remove permission on any files/folder - (umask) temproary
+        Directory full permission   777   file full permission   666
+        root user default umask 022   and normal user umask value 002
+     root user folder value (777-022 = 755), file value (666-022= 644)
+   Normal user folder value (777-002 = 775) , file value (666-002 = 664)
+ ** If exit then umask again get default value. So if you want to change permanent value change
+        of umask then goto .bashrc (vim .bashrc) and write here.
+
+ACL -- (Access Control List) To provide custom permission. First priority will be of ACL     then chmod e.g setfacl -m u : harry : r--  /india     (m-modify, u-user, here we     set the r--  permission to user harry)
+         getfacl  /india      ---> To see the permission
+
+         setfacl -x u : harry : /india    (here harry x-removed)    getfacl  /india
+         setfacl -b /india   (It removed all acl user)
+groupadd dev   -->  useradd dev-user   -->  usermod -G dev dev-user
+setfacl -m g : dev : rwx  /india
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Harddisk Types --> i) SATA ii) PATA (old version)
+SATA - sda, sdb, sdc again sda --> sda1, sda2,sda3
+Types of partition --> i) Primary (min=1, max=4)    ii) extended (min=0, max=1)
+extended can again partition into logical partition (upto 11 in rhel)
+To recognise partition is primary or extended(logical) e.g primaryid p 83, extendedid E5, Logical L83
+
+   fdisk-l   --> To show how much harddisk added in the system            
+     e.g /dev/sda1 *  (here * means this hdd contains OS) e.g fdisk /dev/sdb
+
+    lsblk  --> To check harddisk use
+    First format then save any data on HARDDISK
+    blkid  --> To check partition formatted or not e.g mkfs -t ext2 /dev/sdb1
+    df -h   --> Mount to save data
+   mount /dev/sdb1/partition1/        df -h       umount /partition1/    df -h
+
+* If reboot the system then mount auto deleted, if want permanent mount then set on /etc/fstab
+     mkfs -t vfat /dev/sdb5       ---- logical drive format vfat
+
+    unmount partition ---> unmount /partition6
+     
+command (m for help) : p , n --> add a new partition,p --> primary (0p 0E 4 free) , e -->extended     D--> delete a partition
+     partprobe --> For kernel update  e.g  partprobe  /dev/sdb     fdisk -l
+
+** If you add direct hdd can't create metadata, so first create Volume Group VG
+     lv, vg, lvextend , lvreduce , lvresize , lvs , lvdisplay , vgdisplay , vgreduce , lvcreate --- cmd  
+    * Swap partition also called temporary memory or virtual memory. max size 64GB
+   free -h    swapon -s     ---> To see swap partition
+.............................................................................................................................................................................
+
+   rpm -qa  ----> To get all software installed on that system
+   rpm -qa firefox     ----> To check availability of that software
+   rpm -ivh/uvh firefox      -----> To install/update package and dependency
+
+   Drwabacks of rpm --> first solve the dependency package issue then install package
+
+* yum --> Can query, update and delete e.g all rpm store  /etc/yum.   repo.d/
+    yum clean all
+    yum repolist   ---> It show all repository
+  To make yum repository  --> yum-config-manager --add-repo=file:///examplerpm
+   vim /etc/yum.conf     gpgcheck=0
+** To go inside package use repodata by yum e.g cd repodata
+
+    yum list installed   ---> To show list of all installed
+    yum list httpd      ---> This show particular pkg installed or not
+    yum info httpd     ---> Show info of that package
+    yum install httpd    ----> If want to install any pkg
+    yum reinstall/update/remove/autoremove httpd    -----> remove will delete only pkg not             dependency while autoremove delete both        
+    yum history       ---> Show all history activity
+    yum history info/undo/redo 4
+    yum search all "web server"   ---> Search that package
+   cd /var/log/      ---> Show all log
+
+
+   Linux systemctl (Daemon) - It's like a program who control the service which is Ongoing    on any system.e.g service start, stop or restart
+     service - (ssh, http, nfs, dns)  Daemon - (sshd, httpd, nfs-server, named)
+
+    e.g systemctl status/stop/disable/start/enable/reload/restart sshd
+
+* if we stop any service and system reboot then it's again active, for permanent stop have to   disable
+if we start any service and system reboot then it's again deactive, for permanent start have to   enable
+    vim /etc/ssh/sshd_config
+If you changes any ssh config file then have to reload that service to know the OS. 
+    e.g systemctl reload sshd
+* If you restart the service, the processid change since it stop the service and get new ID while in case of reload, processid remain same so service not stop.
+    systemctl is-active/is-enabled sshd       ---> To check
+
+System State --> 4 Target a) graphical .target b) multi-user .target  c) rescue .target  d)                  Emergency .target e.g systemctl get -default
+Sudo --> We give permission to normal user to access different activity by roles and responnsibility
+        e.g sudo fdisk -l
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Job Scheduling cmd (Auto handle and task reduce) :- at (one time scheduling), crontab (regular schedule) e.g yum list at/crontab  , yum install at/crontab , systemctl status/startenable      atd/crond
+     at 12:50/next monday/noon/now+1 hour
+     at> touch abc
+     at> yum install tree* -y
+    at> <EOT>
+  atq --> all task in queue show,   atrm  ---> unschedule job
+
+Syntax of crontab :- SHELL PATH MAILTO
+       ctontab -e
+    min  hr  day  month   dayweek  User   echo "welcome 2022" >> india.txt
+        crontab -l      ----> It show scheduled job
+       crontab -r/l   --> To delete crontab
+    cd /etc/cron.hourly/daily/monthly/weekly/deny/allow
+Google  ---> crontab generator online
+
+Server Type :- i) Proxy Server  ii) DNS Server  iii) DHCP Server
+
+IP Class - i) A : 0-127 ii) B : 128-191  iii) C : 192-223  iv) D : 224-239  v) E : 240-255
+
+IP Address configure method on Linux Server - i) GUI  ii) CLI  iii) Configuration File  iv) nmcli
+     #ifconfig   #nmtui
+We don't put IP address directly on LAN Card, first make a connection then that connection bind with Lan card
+     #nmcli connection show  #nmcli connection delete myconn  #nmcli device status
+     #nmcli connection up/down/delete  myconn   #nmcli connection add con-name USA-Office
+     DNS store on #vim /etc/resolv.conf
+
+    HOSTNAME SET :- #hostnamectl set-hostname dns-server   #hostname  #bash
+    #vim /etc/hosts   (enter ip here 10.125.170.21 dns-server)  #ping dns-server
+#rsync  --> To copy data, if in between connection lost after re connection it copy from further not            initial
+    # rsync -avh root@dhcp-server:/etc/*(source)  /mydata/ (destin.)
+
+TELNET and SSH --> It use to access system remotely like anydesk, teamviewer. Telnet use by  IP while in SSH use fingerprint SHA.  Telnet use locally to access. On both system must be     openssh-client and server package.
+    id, password or key or permission on config file of server system must be to access. e.g  #ssh root@10.125.170.22  #cat known-hosts  (ssh key here) #vim /etc/ssh/ssh_config         #PermitRootLogin  NO   #systemctl reload sshd
+
+SSH without password :- i) id_rsa, id_rsa.pub - (#l. , cd .ssh/  ll ) Send the id_rsa.pub to remote other system through rsync/copy or pen drive. On remote machine #cd .ssh #ls #vim authorize_key
+paste the id_rsa.pub key here. To protect with the hack server client bind with particular IP and hostname. e.g ssh-copy-id -i root@10.125.170.22, #rsync -avh id_rsa root@10.125.170.23:/root/.ssh/
+#vim /authorize_key/   (mention here IP and hostname for fixed acces of key)
+
+#ssh-keygen  #passphrase :   (for more secure can provide this) #cd .ssh/  #ls #ssh-copy-id -i root@10.125.170.22    #ssh root@10.125.170.22
+
+** By default ssh run on port 22. If want to run on custom port have to set on config file and mention them. e.g ssh root@10.125.170.22 -p 2222   #vim /etc/ssh/sshd_config  mention port no        here 2222 
+#systemctl status/stop/start  firewalld
+#firewall-cmd --permanent --zone=public --add-port=5555/tcp
+
+** file $(which java) -- to find complete java path
+
+**A zombie process is a process whose execution is completed but it still has an entry in the process table. Zombie processes usually occur for child processes, as the parent process still needs to read its child’s exit status. 
+Zombie processes don't use any system resources but they do retain their process ID.
